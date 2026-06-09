@@ -5,17 +5,40 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f0f2f5;
+    font-family: "Segoe UI", sans-serif;
+    background: #e8edf5;
+    color: #2c3e50;
     padding: 2rem;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1e293b;
 }
 
 .exercise {
-    margin-bottom: 3rem;
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.exercise:hover {
+    transform: translateY(-3px);
 }
 
 .exercise_title {
     margin-bottom: 1rem;
+    color: #2563eb;
 }
 
 .exercise_description {
@@ -24,25 +47,51 @@ body {
 
 .button-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 .button {
-    padding: 0.75rem 1.25rem;
+    padding: 0.8rem 1.4rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 .counter {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2563eb;
     margin-bottom: 1rem;
 }
 
 .input {
-    padding: 10px;
-    border: 2px solid gray;
-    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: #2563eb;
+}
+
+.message {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
 }
 
 .valid {
@@ -54,6 +103,19 @@ body {
     display: block;
 }
 
-.message {
-    margin-top: 10px;
+.anime-list {
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.anime-item {
+    background: #f8fafc;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border-left: 5px solid #2563eb;
+}
+
+hr {
+    display: none;
 }

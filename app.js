@@ -9,6 +9,9 @@ let counter = 0;
 const passwordInput = document.getElementById("passwordInput");
 const passwordMessage = document.getElementById("passwordMessage");
 
+const searchInput = document.getElementById("searchInput");
+const animeItems = document.querySelectorAll(".anime-item");
+
 /// 1. Generate random background.
 colorButton.addEventListener("click", () => {
   document.body.style.backgroundColor = generateRandomColor();
@@ -54,4 +57,22 @@ passwordInput.addEventListener("input", () => {
     passwordMessage.classList.add("invalid");
     console.log("-8");
   }
+});
+
+
+/// 4. Get list item for leters in input.
+searchInput.addEventListener("input", () => {
+    const searchText =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+    animeItems.forEach(anime => {
+        const animeTitle = anime.textContent.toLowerCase();
+
+        if (animeTitle.includes(searchText)) {
+            anime.style.display = "list-item";
+        } else {
+            anime.style.display = "none";
+        }
+    });
 });
