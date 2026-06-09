@@ -19,6 +19,8 @@ const characterContainer = document.getElementById("characterContainer");
 
 const darkModeButton = document.getElementById("darkModeButton");
 
+const favoritesContainer = document.getElementById("favoritesContainer");
+
 
 /// 1. Generate random background.
 colorButton.addEventListener("click", () => {
@@ -146,3 +148,84 @@ darkModeButton.addEventListener("click", () => {
     const isDarkMode = document.body.classList.contains("dark-mode");
     localStorage.setItem("darkMode", isDarkMode);
 });
+
+
+/// 8. Saved data in local storage like favorites.
+const animeList = [
+    {
+        id: 1,
+        title: "Naruto"
+    },
+    {
+        id: 2,
+        title: "One Piece"
+    },
+    {
+        id: 3,
+        title: "Bleach"
+    },
+    {
+        id: 4,
+        title: "Solo Leveling"
+    },
+    {
+        id: 5,
+        title: "Jujutsu Kaisen"
+    }
+];
+
+const favorites = JSON.parse(localStorage.getItem("favoriteAnime")) || [];
+
+function saveFavorites() {
+    localStorage.setItem("favoriteAnime",JSON.stringify(favorites));
+}
+
+function renderAnimeCards() {
+    favoritesContainer.innerHTML = "";
+    animeList.forEach(anime => {
+        const card = document.createElement("article");
+        card.classList.add("favorite-card");
+        const isFavorite = favorites.includes(anime.id);
+
+        if (isFavorite) {
+            card.classList.add(
+                "favorite-active"
+            );
+        }
+
+        card.innerHTML = `
+            <h3>${anime.title}</h3>
+
+            <button
+                class="button favorite-button"
+                data-id="${anime.id}"
+            >
+                ${
+                    isFavorite
+                        ? "Remove Favorite"
+                        : "Add Favorite"
+                }
+            </button>
+        `;
+        favoritesContainer.appendChild(card);
+    });
+}
+
+favoritesContainer.addEventListener("click",(event) => {
+        if (!event.target.classList.contains("favorite-button")) {
+            return;
+        }
+
+        const animeId = Number(event.target.dataset.id);
+        const favoriteIndex = favorites.indexOf(animeId);
+        if (favoriteIndex === -1) {
+            favorites.push(animeId);
+        } else {
+            favorites.splice(favoriteIndex, 1);
+        }
+        saveFavorites();
+        renderAnimeCards();
+    }
+);
+
+renderAnimeCards();
