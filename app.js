@@ -15,6 +15,8 @@ const animeItems = document.querySelectorAll(".anime-item");
 const galleryContainer = document.getElementById("galleryContainer");
 const mainImage = document.getElementById("mainImage");
 
+const characterContainer = document.getElementById("characterContainer");
+
 /// 1. Generate random background.
 colorButton.addEventListener("click", () => {
   document.body.style.backgroundColor = generateRandomColor();
@@ -86,4 +88,45 @@ galleryContainer.addEventListener("click", (event) => {
         mainImage.src =
             event.target.src;
     }
+});
+
+/// 6. Generate cards with data from a local array.
+const characters = [
+    {
+        name: "Naruto Uzumaki",
+        role: "Hokage",
+        biography: "Un ninja que sueña con convertirse en Hokage."
+    },
+    {
+        name: "Monkey D. Luffy",
+        role: "Capitan Pirata",
+        biography: "El futuro Rey de los Piratas."
+    },
+    {
+        name: "Ichigo Kurosaki",
+        role: "Shinigami a tiempo parcial :v",
+        biography: "Protector de la ciudad de Karakura."
+    },
+    {
+        name: "Sung Jin-Woo",
+        role: "Monarca de las sombras",
+        biography: "El cazador mas fuerte en solitario."
+    }
+];
+
+characters.forEach(character => {
+    const card = document.createElement("article");
+    card.classList.add("character-card");
+    card.innerHTML = `
+        <h3 class="character-name">
+            ${character.name}
+        </h3>
+        <p class="character-role">
+            ${character.role}
+        </p>
+        <p>
+            ${character.biography}
+        </p>
+    `;
+    characterContainer.appendChild(card);
 });
