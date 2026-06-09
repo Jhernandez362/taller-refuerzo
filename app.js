@@ -17,6 +17,9 @@ const mainImage = document.getElementById("mainImage");
 
 const characterContainer = document.getElementById("characterContainer");
 
+const darkModeButton = document.getElementById("darkModeButton");
+
+
 /// 1. Generate random background.
 colorButton.addEventListener("click", () => {
   document.body.style.backgroundColor = generateRandomColor();
@@ -129,4 +132,17 @@ characters.forEach(character => {
         </p>
     `;
     characterContainer.appendChild(card);
+});
+
+/// 7. Toggle dark mode button.
+const savedMode = localStorage.getItem("darkMode");
+
+if (savedMode === "true") {
+    document.body.classList.add("dark-mode");
+}
+
+darkModeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode);
 });

@@ -12,6 +12,11 @@ body {
     line-height: 1.6;
 }
 
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -23,6 +28,12 @@ h1 {
     color: #1e293b;
 }
 
+.dark-mode h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
 .exercise {
     background: white;
     padding: 1.5rem;
@@ -30,6 +41,11 @@ h1 {
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s;
+}
+
+.dark-mode .exercise {
+    background: #1e293b;
+    color: white;
 }
 
 .exercise:hover {
@@ -85,6 +101,12 @@ h1 {
     transition: border-color 0.3s;
 }
 
+.dark-mode .input {
+    background: #334155;
+    color: white;
+    border-color: #475569;
+}
+
 .input:focus {
     border-color: #2563eb;
 }
@@ -114,6 +136,21 @@ h1 {
     margin-bottom: 0.5rem;
     border-radius: 8px;
     border-left: 5px solid #2563eb;
+}
+
+.dark-mode .anime-item {
+    background: #334155;
+    color: white;
+    border-left-color: #60a5fa;
+}
+
+.anime-item:hover {
+    transform: translateX(5px);
+    background: #eff6ff;
+}
+
+.dark-mode .anime-item:hover {
+    background: #475569;
 }
 
 hr {
@@ -162,6 +199,11 @@ hr {
     padding: 1rem;
     border-left: 5px solid #2563eb;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.dark-mode .character-card {
+    background: #334155;
+    color: white;
 }
 
 .character-name {
