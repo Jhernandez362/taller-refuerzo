@@ -265,3 +265,34 @@ hr {
 .dark-mode .timer-container {
     background: #334155;
 }
+
+.autocomplete-container {
+    position: relative;
+    max-width: 400px;
+}
+
+.suggestions-list {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    margin-top: .25rem;
+    z-index: 10;
+}
+
+.suggestion-item:hover {
+    background: #e2e8f0;
+}
+
+.dark-mode .suggestions-list {
+    background: #334155;
+}
+
+.dark-mode .suggestion-item:hover {
+    background: #475569;
+}

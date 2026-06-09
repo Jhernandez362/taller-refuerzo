@@ -1,32 +1,6 @@
+/// 1. Generate random background.
 const colorButton = document.getElementById("colorButton");
 
-const counterValue = document.querySelector("#counterValue");
-const incrementButton = document.querySelector("#incrementButton");
-const decrementButton = document.querySelector("#decrementButton");
-const resetButton = document.querySelector("#resetButton");
-let counter = 0;
-
-const passwordInput = document.getElementById("passwordInput");
-const passwordMessage = document.getElementById("passwordMessage");
-
-const searchInput = document.getElementById("searchInput");
-const animeItems = document.querySelectorAll(".anime-item");
-
-const galleryContainer = document.getElementById("galleryContainer");
-const mainImage = document.getElementById("mainImage");
-
-const characterContainer = document.getElementById("characterContainer");
-
-const darkModeButton = document.getElementById("darkModeButton");
-
-const favoritesContainer = document.getElementById("favoritesContainer");
-
-const secondsInput = document.getElementById("secondsInput");
-const startTimerButton = document.getElementById("startTimerButton");
-const timerDisplay = document.getElementById("timerDisplay");
-const timerContainer = document.getElementById("timerContainer");
-
-/// 1. Generate random background.
 colorButton.addEventListener("click", () => {
   document.body.style.backgroundColor = generateRandomColor();
 });
@@ -40,6 +14,12 @@ function generateRandomColor() {
 }
 
 /// 2. Update counter with decrement,increment and reset buttons get with query selector.
+const counterValue = document.querySelector("#counterValue");
+const incrementButton = document.querySelector("#incrementButton");
+const decrementButton = document.querySelector("#decrementButton");
+const resetButton = document.querySelector("#resetButton");
+let counter = 0;
+
 incrementButton.addEventListener("click", () => {
   counter++;
   updateCounter();
@@ -60,6 +40,9 @@ function updateCounter() {
 }
 
 /// 3. Read in real time the length of the input password.
+const passwordInput = document.getElementById("passwordInput");
+const passwordMessage = document.getElementById("passwordMessage");
+
 passwordInput.addEventListener("input", () => {
   const password = passwordInput.value;
   if (password.length >= 8) {
@@ -74,6 +57,9 @@ passwordInput.addEventListener("input", () => {
 });
 
 /// 4. Get list item for leters in input.
+const searchInput = document.getElementById("searchInput");
+const animeItems = document.querySelectorAll(".anime-item");
+
 searchInput.addEventListener("input", () => {
   const searchText = searchInput.value.trim().toLowerCase();
   animeItems.forEach((anime) => {
@@ -88,6 +74,8 @@ searchInput.addEventListener("input", () => {
 });
 
 /// 5. Change the main image with click on the thumbnail.
+const galleryContainer = document.getElementById("galleryContainer");
+const mainImage = document.getElementById("mainImage");
 galleryContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "IMG") {
     mainImage.src = event.target.src;
@@ -95,6 +83,7 @@ galleryContainer.addEventListener("click", (event) => {
 });
 
 /// 6. Generate cards with data from a local array.
+const characterContainer = document.getElementById("characterContainer");
 const characters = [
   {
     name: "Naruto Uzumaki",
@@ -136,6 +125,8 @@ characters.forEach((character) => {
 });
 
 /// 7. Toggle dark mode button.
+const darkModeButton = document.getElementById("darkModeButton");
+
 const savedMode = localStorage.getItem("darkMode");
 
 if (savedMode === "true") {
@@ -149,6 +140,7 @@ darkModeButton.addEventListener("click", () => {
 });
 
 /// 8. Saved data in local storage like favorites.
+const favoritesContainer = document.getElementById("favoritesContainer");
 const animeList = [
   {
     id: 1,
@@ -222,6 +214,11 @@ favoritesContainer.addEventListener("click", (event) => {
 renderAnimeCards();
 
 /// 9. Countdown object
+const secondsInput = document.getElementById("secondsInput");
+const startTimerButton = document.getElementById("startTimerButton");
+const timerDisplay = document.getElementById("timerDisplay");
+const timerContainer = document.getElementById("timerContainer");
+
 let intervalId;
 
 startTimerButton.addEventListener("click", () => {
@@ -233,7 +230,7 @@ startTimerButton.addEventListener("click", () => {
 
   timerContainer.classList.remove("timer-finished");
   timerDisplay.textContent = seconds;
-  
+
   intervalId = setInterval(() => {
     seconds--;
     timerDisplay.textContent = seconds;
@@ -243,4 +240,47 @@ startTimerButton.addEventListener("click", () => {
       timerContainer.classList.add("timer-finished");
     }
   }, 1000);
+});
+
+/// 10. Autocomplete anime search with names.
+const animeSearchInput = document.getElementById("animeSearchInput");
+const suggestionsList = document.getElementById("suggestionsList");
+
+const animeDatabase = [
+  "Naruto",
+  "Naruto Shippuden",
+  "One Piece",
+  "Bleach",
+  "Attack on Titan",
+  "Solo Leveling",
+  "Jujutsu Kaisen",
+  "Demon Slayer",
+  "Death Note",
+  "Hunter x Hunter",
+];
+
+animeSearchInput.addEventListener("input", () => {
+  const searchText = animeSearchInput.value.trim().toLowerCase();
+  suggestionsList.innerHTML = "";
+
+  if (!searchText) {
+    return;
+  }
+
+  const matches = animeDatabase.filter((anime) =>
+    anime.toLowerCase().includes(searchText),
+  );
+
+  matches.forEach((anime) => {
+    const item = document.createElement("li");
+    item.classList.add("suggestion-item");
+
+    item.textContent = anime;
+    item.addEventListener("click", () => {
+      animeSearchInput.value = anime;
+      suggestionsList.innerHTML = "";
+    });
+
+    suggestionsList.appendChild(item);
+  });
 });
