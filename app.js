@@ -12,6 +12,9 @@ const passwordMessage = document.getElementById("passwordMessage");
 const searchInput = document.getElementById("searchInput");
 const animeItems = document.querySelectorAll(".anime-item");
 
+const galleryContainer = document.getElementById("galleryContainer");
+const mainImage = document.getElementById("mainImage");
+
 /// 1. Generate random background.
 colorButton.addEventListener("click", () => {
   document.body.style.backgroundColor = generateRandomColor();
@@ -75,4 +78,12 @@ searchInput.addEventListener("input", () => {
             anime.style.display = "none";
         }
     });
+});
+
+/// 5. Change the main image with click on the thumbnail.
+galleryContainer.addEventListener("click", (event) => {
+    if (event.target.tagName === "IMG") {
+        mainImage.src =
+            event.target.src;
+    }
 });
