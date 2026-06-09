@@ -244,3 +244,24 @@ hr {
     border: 2px solid #f59e0b;
     color: black;
 }
+
+.timer-container {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 4rem;
+}
+
+.timer-finished {
+    background: #fee2e2;
+    border: 2px solid red;
+}
+
+.dark-mode .timer-container {
+    background: #334155;
+}
