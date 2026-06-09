@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f0f2f5; 
+    background: #f0f2f5;
     padding: 2rem;
 }
 
@@ -37,4 +37,23 @@ body {
 .counter {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.input {
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.valid {
+    display: none;
+}
+
+.invalid {
+    color: red;
+    display: block;
+}
+
+.message {
+    margin-top: 10px;
 }

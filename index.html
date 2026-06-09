@@ -11,11 +11,8 @@
 <body>
     <div>
         <h1>Taller de Refuerzo JS</h1>
-
         <section class="exercise">
             <h2 class="exercise_title">Ejercicio 1: Cambiador de Fondo Dinámico</h2>
-            <p><strong>Temas:</strong> Eventos (click), manipulación de estilos CSS desde JS, generación de
-                valores aleatorios.</p>
             <p class="exercise_description"><strong>Enunciado:</strong>
                 Crea un botón en tu HTML. Cada vez que el usuario haga clic en él, el
                 color de fondo de la página (body) debe cambiar a un color generado de forma
@@ -25,16 +22,13 @@
         </section>
 
         <hr>
+
         <section class="exercise">
             <h2 class="exercise_title">Ejercicio 2: Contador Incremental/Decremental</h2>
-
-            <p><strong>Temas:</strong>Selección de elementos (querySelector), eventos, modificación de texto
-                (textContent).</p>
-
-            <p class="exercise_description"><strong>Enunciado:</strong> Diseña una interfaz sencilla con un número en pantalla (inicializado en
+            <p class="exercise_description"><strong>Enunciado:</strong> Diseña una interfaz sencilla con un número en
+                pantalla (inicializado en
                 0) y tres botones: "Incrementar", "Decrementar" y "Resetear". Asegúrate de que al
                 pulsar cada botón el número cambie y se actualice correctamente en el DOM.
-
             <h3 id="counterValue" class="counter">
                 0
             </h3>
@@ -49,6 +43,23 @@
                     Resetear
                 </button>
             </div>
+        </section>
+
+        <section class="exercise">
+            <h2 class="exercise_title">
+                Ejercicio 3: Validación de Formulario en Tiempo Real
+            </h2>
+            <p class="exercise_description">
+                Crea un formulario con un campo para contraseña. A medida que el
+                usuario escribe, verifica en tiempo real si el texto tiene al menos 8 caracteres. Si
+                cumple la condición, pinta el borde del input de verde; si no, píntalo de rojo o
+                muestra un mensaje de advertencia debajo.
+            </p>
+            <input id="passwordInput" class="input" type="password" placeholder="Contraseña">
+
+            <p id="passwordMessage" class="message">
+                La contraseña debería tener 8 caracteres.
+            </p>
 
         </section>
 
